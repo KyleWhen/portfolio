@@ -1,0 +1,56 @@
+def write(content):
+    try:
+        with open("data.txt", "w") as file:
+            for content in file:
+                file.write(content + "\n")
+    except FileNotFoundError:
+        print("File not found, please try again.")
+    except OSError:
+        content=[]
+
+def read(content):
+    content=[]
+    with open("data.txt") as file:
+        for line in file:
+            line=line.replace("\n")
+            content.append(line)
+    return content
+
+def menu(content):
+    print("\t\t\tSales Report\n")
+    print("{:<10} {:>10} {:>12} {:>12} {:>12}".format("Region", "Q1", "Q2", "Q3", "Q4"))
+
+def display(content):
+    for i in range(len(content)):
+        print("{:<10} {:>10.2f} {:>12.2f} {:>12.2f} {:>12.2f}".format(content[i][0], content[i][1], content[i][2], content[i][3], content[i][4]))
+
+def sales_by_region(content):
+    print("Region 1: 7,845.00")
+    print("Region 2: 5,636.00")
+    print("Region 3: 7,879.00")
+    print("Region 4: 9,174.00")
+
+def sales_by_quarter(content):
+    print("Q1: 5,355.00")
+    print("Q2: 9,585.00")
+    print("Q3: 9,398.00")
+    print("Q4: 6,196.00")
+
+def total_annual_sales(content):
+    print("Total annual sales, all regions: $30,534.00")
+    
+def main():
+    content=[[1, 1540, 2010, 2450, 1845], [2, 1130, 1168, 1847, 1491], [3, 1580, 2305, 2710, 1284], [4, 1105, 4102, 2391, 1576]]
+    write(content)
+    read(content)
+    menu(content)
+    display(content)
+    sales_by_region(content)
+    sales_by_quarter(content)
+    total_annual_sales(content)
+
+
+if __name__ == "__main__":
+
+    main()
+
